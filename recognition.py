@@ -5,7 +5,7 @@ import numpy as np
 import math
 
 
-# Helper
+# this code helps to calculate the confidence threshold of the face
 def face_confidence(face_distance, face_match_threshold=0.6):
     range = (1.0 - face_match_threshold)
     linear_val = (1.0 - face_distance) / (range * 2.0)
