@@ -4,7 +4,6 @@ import cv2
 import numpy as np
 import math
 
-
 # this code helps to calculate the confidence threshold of the face
 def face_confidence(face_distance, face_match_threshold=0.6):
     range = (1.0 - face_match_threshold)
@@ -15,7 +14,6 @@ def face_confidence(face_distance, face_match_threshold=0.6):
     else:
         value = (linear_val + ((1.0 - linear_val) * math.pow((linear_val - 0.5) * 2, 0.2))) * 100
         return str(round(value, 2)) + '%'
-
 
 class FaceRecognition:
     face_locations = []
@@ -32,7 +30,6 @@ class FaceRecognition:
         for image in os.listdir('faces'):
             face_image = face_recognition.load_image_file(f"faces/{image}")
             face_encoding = face_recognition.face_encodings(face_image)[0]
-
             self.known_face_encodings.append(face_encoding)
             self.known_face_names.append(image)
         print(self.known_face_names)
