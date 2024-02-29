@@ -1,8 +1,29 @@
-from pinecone import Pinecone
-import os 
+from pinecone import Pinecone as PineconeClient
+import os
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
-pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
-index = pc.Index("paywithface")
+class Pinecone:
+    _instance = None
+    # Singleton pattern to ensure only one instance of Pinecone client and index
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(Pinecone, cls).__new__(cls)
+            # Initialize Pinecone client and index
+            api_key = os.getenv("PINECONE_API_KEY")
+            if not api_key:
+                raise ValueError("Pinecone API key is not set in environment variables")
+            cls._instance.client = PineconeClient(api_key=api_key)
+            index_name = 'paywithface'
+            cls._instance.index = cls._instance.client.Index(index_name)
+        return cls._instance
+
+    def upsert(self, vectors, namespace='default-namespace'):
+        """
+        Upserts a list of vectors to the Pinecone index.
+        Each vector in the list should be a dictionary with 'id', 'values', and optionally 'metadata'.
+        """
+        return self.index.upsert(vectors=vectors, namespace=namespace)
