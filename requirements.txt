@@ -2,3 +2,7 @@ dlib==19.22
 opencv-python
 face-recognition
 numpy
+pinecone-client
+requests
+python-dotenv 
+sentence-transformers
