@@ -1,4 +1,4 @@
-dlib==19.22
+dlib
 opencv-python
 face-recognition
 numpy
