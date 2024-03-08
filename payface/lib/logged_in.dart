@@ -23,14 +23,21 @@ class LoggedInPage extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               '\$$balance',
-              style: const  TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 32),
             ElevatedButton(
               onPressed: () {
                 _launchCameraApp();
               },
-              child: const Text('Pay'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black, backgroundColor: Colors.white, // Change text color to black
+                minimumSize: Size(200, 60), // Set button size
+              ),
+              child: const Text(
+                'Pay',
+                style: TextStyle(fontSize: 20), // Set text size
+              ),
             ),
           ],
         ),
