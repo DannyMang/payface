@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'camera.dart';
 
 class LoggedInPage extends StatelessWidget {
   final double balance;
-
   const LoggedInPage({required this.balance});
 
   @override
@@ -39,6 +39,9 @@ class LoggedInPage extends StatelessWidget {
                 style: TextStyle(fontSize: 20), // Set text size
               ),
             ),
+             const SizedBox(height: 32),
+            CameraButton(),
+                  
           ],
         ),
       ),
