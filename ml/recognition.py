@@ -2,7 +2,37 @@ import face_recognition
 import os, sys
 import cv2
 import numpy as np
-import math
+import math 
+import pineconedb
+from dotenv import load_dotenv
+ 
+ #calls variables from env file
+ load_dotenv()
+
+# Initialize Pinecone
+pinecone.init(api_key=os.getenv("PINECONE_API_KEY"))
+index_name = "face-encodings"
+pinecone.deinit() 
+# Load a sample picture and learn how to recognize it.
+known_face_encodings = []
+known_face_names = []
+
+# Load all faces from the Pinecone index
+for item in pinecone.fetch(index_name):
+    known_face_encodings.append(np.fromstring(item.vector, dtype=np.float))
+    known_face_names.append(item.id)
+
+
+# Load a sample picture and learn how to recognize it.
+known_face_encodings = []
+known_face_names = []
+
+# Load all faces from the Pinecone index
+for item in pinecone.fetch(index_name):
+    known_face_encodings.append(np.fromstring(item.vector, dtype=np.float))
+    known_face_names.append(item.id)
+
+
 
 # this code helps to calculate the confidence threshold of the face
 def face_confidence(face_distance, face_match_threshold=0.6):
@@ -69,7 +99,10 @@ class FaceRecognition:
                     this function will look for the face in the known face encodings and will return the name of the person
                     however we now have a database of faces and we need to query the database to get the name of the person
 
-                    when the face is detected we will get the face encoding and we will query the database to get the name of the person
+                    when the face is detected we will get the face encoding and we will query the database to get the name of the person 
+
+                    Detect face  ->  Get face encoding  ->  Query database  ->  Get name of the person
+
         
                 
                 """
