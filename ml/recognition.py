@@ -23,17 +23,6 @@ class FaceRecognition:
     known_face_names = []
     process_current_frame = True
 
-    def __init__(self):
-        self.encode_faces()
-
-    def encode_faces(self):
-        for image in os.listdir('faces'):
-            face_image = face_recognition.load_image_file(f"faces/{image}")
-            face_encoding = face_recognition.face_encodings(face_image)[0]
-            self.known_face_encodings.append(face_encoding)
-            self.known_face_names.append(image)
-        print(self.known_face_names)
-
     def run_recognition(self):
         video_capture = cv2.VideoCapture(0)
 
@@ -52,9 +41,10 @@ class FaceRecognition:
                 rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
                 # Find all the faces and face encodings in the current frame of video
                 self.face_locations = face_recognition.face_locations(rgb_small_frame)
-                self.face_encodings = face_recognition.face_encodings(rgb_small_frame, self.face_locations)
 
                 self.face_names = []
+
+                """ 
                 for face_encoding in self.face_encodings:
                     # See if the face is a match for the known face(s)
                     matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
@@ -70,6 +60,19 @@ class FaceRecognition:
                         confidence = face_confidence(face_distances[best_match_index])
 
                     self.face_names.append(f'{name} ({confidence})')
+
+
+                    
+
+                    INSTRUCTIONS TO BE FOLLOWED:
+
+                    this function will look for the face in the known face encodings and will return the name of the person
+                    however we now have a database of faces and we need to query the database to get the name of the person
+
+                    when the face is detected we will get the face encoding and we will query the database to get the name of the person
+        
+                
+                """
 
             self.process_current_frame = not self.process_current_frame
 
