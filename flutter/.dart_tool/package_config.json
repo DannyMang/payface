@@ -80,12 +80,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "flutter_lints",
-      "rootUri": "file:///Users/danielung/.pub-cache/hosted/pub.dev/flutter_lints-3.0.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "flutter_plugin_android_lifecycle",
       "rootUri": "file:///Users/danielung/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17",
       "packageUri": "lib/",
@@ -105,9 +99,9 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/danielung/.pub-cache/hosted/pub.dev/http-1.2.1",
+      "rootUri": "file:///Users/danielung/.pub-cache/hosted/pub.dev/http-0.13.6",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "2.19"
     },
     {
       "name": "http_parser",
@@ -180,12 +174,6 @@
       "rootUri": "file:///Users/danielung/.pub-cache/hosted/pub.dev/leak_tracker_testing-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "3.1"
-    },
-    {
-      "name": "lints",
-      "rootUri": "file:///Users/danielung/.pub-cache/hosted/pub.dev/lints-3.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
     },
     {
       "name": "matcher",
@@ -356,7 +344,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-03-18T04:01:14.741948Z",
+  "generated": "2024-03-25T04:50:15.177742Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }

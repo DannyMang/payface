@@ -27,3 +27,9 @@ class Pinecone:
         Each vector in the list should be a dictionary with 'id', 'values', and optionally 'metadata'.
         """
         return self.index.upsert(vectors=vectors, namespace=namespace)
+    
+    def query(self, query_vector, top_k=1, namespace='default-namespace'):
+        """
+        Queries the Pinecone index with a vector and returns the top k results.
+        """
+        return self.index.query(queries=[query_vector], top_k=top_k, namespace=namespace)
