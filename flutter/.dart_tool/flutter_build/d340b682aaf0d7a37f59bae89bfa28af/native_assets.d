@@ -1,0 +1,1 @@
+ /Users/danielung/Desktop/sjsu/mlClub/faceRecognition/flutter/.dart_tool/flutter_build/d340b682aaf0d7a37f59bae89bfa28af/native_assets.yaml: 
