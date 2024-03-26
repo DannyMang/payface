@@ -5,23 +5,15 @@ import cv2
 import numpy as np
 import math 
 import pineconedb
+
 from dotenv import load_dotenv
+from encoder import encode
  
  #calls variables from env file
 load_dotenv()
-"""
-    client = pineconedb.Pinecone()
-    index_name = "face-encodings"
 
-    # Load all faces from the Pinecone index
-    known_face_encodings = []
-    known_face_names = []
-  """  
-
+client = pineconedb.Pinecone()
    
-
-
-
 # this code helps to calculate the confidence threshold of the face
 def face_confidence(face_distance, face_match_threshold=0.6):
     range = (1.0 - face_match_threshold)
@@ -33,17 +25,41 @@ def face_confidence(face_distance, face_match_threshold=0.6):
     else:
         value = (linear_val + ((1.0 - linear_val) * math.pow((linear_val - 0.5) * 2, 0.2))) * 100
         return str(round(value, 2)) + '%'
+    
+
+"""
+fix how image is saved/ queried from the database
+error is in this function, we need to find way to  cache the image that is being used 
+to query the database with... 
+
+"""
+def queryDatabase(face_location, frame):
+    # save the face image to a local file
+    top,right,bottom,left = face_location
+    face_image = frame[top:bottom, left: right]
+    cv2.imwrite('face.png', face_image)
+
+    # Encode the image to get the vector embedding
+    # This assumes you have a function `encode_image` in `encoder.py` that takes an image file path and returns a vector embedding
+
+    vector_embedding = encode('face.png')
+
+    # Query the Pinecone database
+    # This assumes you have a function `query_database` in the Pinecone SDK that takes a vector embedding and returns the name of the most similar vector
+    name = client.query_database(vector_embedding)
+
+    return name
+
 
 class FaceRecognition:
     face_locations = []
-    face_encodings = []
     face_names = []
     known_face_encodings = []
     known_face_names = []
     process_current_frame = True
 
     def run_recognition(self):
-        video_capture = cv2.VideoCapture(1)
+        video_capture = cv2.VideoCapture(0)
 
         if not video_capture.isOpened():
             sys.exit('Video source not found...')
@@ -123,21 +139,6 @@ if __name__ == '__main__':
     fr.run_recognition()
 
 
-def queryDatabase(self, face_location, frame):
-    # save the face image to a local file
-    top,right,bottom,left = face_location
-    face_image = frame[top:bottom, left: right] #fix
-    cv2.imwrite('face.png'. face_image)
 
-    # Encode the image to get the vector embedding
-    # This assumes you have a function `encode_image` in `encoder.py` that takes an image file path and returns a vector embedding
-    from encoder import encode_image
-    vector_embedding =  econde_image('face.png')
-
-    # Query the Pinecone database
-    # This assumes you have a function `query_database` in the Pinecone SDK that takes a vector embedding and returns the name of the most similar vector
-    name = client.query_database(vector_embedding)
-
-    return name
 
        

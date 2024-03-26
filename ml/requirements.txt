@@ -6,3 +6,4 @@ pinecone-client
 requests
 python-dotenv 
 sentence-transformers
+
