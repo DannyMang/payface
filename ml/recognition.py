@@ -43,7 +43,7 @@ class FaceRecognition:
     process_current_frame = True
 
     def run_recognition(self):
-        video_capture = cv2.VideoCapture(0)
+        video_capture = cv2.VideoCapture(1)
 
         if not video_capture.isOpened():
             sys.exit('Video source not found...')
@@ -106,20 +106,6 @@ class FaceRecognition:
 
             self.process_current_frame = not self.process_current_frame
 
-            # Display the results
-            for (top, right, bottom, left), name in zip(self.face_locations, self.face_names):
-                # Scale back up face locations since the frame we detected in was scaled to 1/4 size
-                top *= 5
-                right *= 5
-                bottom *= 5
-                left *= 5
-
-                # Create the frame with the name
-                # Create the frame with the name
-                cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 7)
-                cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
-                cv2.putText(frame, name, (left + 6, bottom - 6), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
-
             # Display the resulting image
             cv2.imshow('Face Recognition', frame)
 
@@ -135,3 +121,23 @@ class FaceRecognition:
 if __name__ == '__main__':
     fr = FaceRecognition()
     fr.run_recognition()
+
+
+def queryDatabase(self, face_location, frame):
+    # save the face image to a local file
+    top,right,bottom,left = face_location
+    face_image = frame[top:bottom, left: right] #fix
+    cv2.imwrite('face.png'. face_image)
+
+    # Encode the image to get the vector embedding
+    # This assumes you have a function `encode_image` in `encoder.py` that takes an image file path and returns a vector embedding
+    from encoder import encode_image
+    vector_embedding =  econde_image('face.png')
+
+    # Query the Pinecone database
+    # This assumes you have a function `query_database` in the Pinecone SDK that takes a vector embedding and returns the name of the most similar vector
+    name = client.query_database(vector_embedding)
+
+    return name
+
+       
