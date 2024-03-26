@@ -1,3 +1,4 @@
+
 import face_recognition
 import os, sys
 import cv2
@@ -7,30 +8,17 @@ import pineconedb
 from dotenv import load_dotenv
  
  #calls variables from env file
- load_dotenv()
+load_dotenv()
+"""
+    client = pineconedb.Pinecone()
+    index_name = "face-encodings"
 
-# Initialize Pinecone
-pinecone.init(api_key=os.getenv("PINECONE_API_KEY"))
-index_name = "face-encodings"
-pinecone.deinit() 
-# Load a sample picture and learn how to recognize it.
-known_face_encodings = []
-known_face_names = []
+    # Load all faces from the Pinecone index
+    known_face_encodings = []
+    known_face_names = []
+  """  
 
-# Load all faces from the Pinecone index
-for item in pinecone.fetch(index_name):
-    known_face_encodings.append(np.fromstring(item.vector, dtype=np.float))
-    known_face_names.append(item.id)
-
-
-# Load a sample picture and learn how to recognize it.
-known_face_encodings = []
-known_face_names = []
-
-# Load all faces from the Pinecone index
-for item in pinecone.fetch(index_name):
-    known_face_encodings.append(np.fromstring(item.vector, dtype=np.float))
-    known_face_names.append(item.id)
+   
 
 
 
@@ -38,6 +26,7 @@ for item in pinecone.fetch(index_name):
 def face_confidence(face_distance, face_match_threshold=0.6):
     range = (1.0 - face_match_threshold)
     linear_val = (1.0 - face_distance) / (range * 2.0)
+    
 
     if face_distance > face_match_threshold:
         return str(round(linear_val * 100, 2)) + '%'
@@ -73,6 +62,11 @@ class FaceRecognition:
                 self.face_locations = face_recognition.face_locations(rgb_small_frame)
 
                 self.face_names = []
+                for face_location in self.face_locations:
+                # Each face_location contains the positions of the top, right, bottom and left edges of the face
+                    top, right, bottom, left = face_location
+                    print(top,right, bottom, left)
+                    
 
                 """ 
                 for face_encoding in self.face_encodings:
@@ -106,19 +100,23 @@ class FaceRecognition:
         
                 
                 """
+            # Find all the faces in the current frame of video
+            self.face_locations = face_recognition.face_locations(rgb_small_frame)
+            print(self.face_locations)
 
             self.process_current_frame = not self.process_current_frame
 
             # Display the results
             for (top, right, bottom, left), name in zip(self.face_locations, self.face_names):
                 # Scale back up face locations since the frame we detected in was scaled to 1/4 size
-                top *= 4
-                right *= 4
-                bottom *= 4
-                left *= 4
+                top *= 5
+                right *= 5
+                bottom *= 5
+                left *= 5
 
                 # Create the frame with the name
-                cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+                # Create the frame with the name
+                cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 7)
                 cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
                 cv2.putText(frame, name, (left + 6, bottom - 6), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
 
