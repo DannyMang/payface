@@ -1,23 +1,58 @@
+
 import face_recognition
 import os, sys
 import cv2
 import numpy as np
-import math
+import math 
+import pineconedb
 
+from dotenv import load_dotenv
+from encoder import encode
+ 
+ #calls variables from env file
+load_dotenv()
+
+client = pineconedb.Pinecone()
+   
 # this code helps to calculate the confidence threshold of the face
 def face_confidence(face_distance, face_match_threshold=0.6):
     range = (1.0 - face_match_threshold)
     linear_val = (1.0 - face_distance) / (range * 2.0)
+    
 
     if face_distance > face_match_threshold:
         return str(round(linear_val * 100, 2)) + '%'
     else:
         value = (linear_val + ((1.0 - linear_val) * math.pow((linear_val - 0.5) * 2, 0.2))) * 100
         return str(round(value, 2)) + '%'
+    
+
+"""
+fix how image is saved/ queried from the database
+error is in this function, we need to find way to  cache the image that is being used 
+to query the database with... 
+
+"""
+def queryDatabase(face_location, frame):
+    # save the face image to a local file
+    top,right,bottom,left = face_location
+    face_image = frame[top:bottom, left: right]
+    cv2.imwrite('face.png', face_image)
+
+    # Encode the image to get the vector embedding
+    # This assumes you have a function `encode_image` in `encoder.py` that takes an image file path and returns a vector embedding
+
+    vector_embedding = encode('face.png')
+
+    # Query the Pinecone database
+    # This assumes you have a function `query_database` in the Pinecone SDK that takes a vector embedding and returns the name of the most similar vector
+    name = client.query_database(vector_embedding)
+
+    return name
+
 
 class FaceRecognition:
     face_locations = []
-    face_encodings = []
     face_names = []
     known_face_encodings = []
     known_face_names = []
@@ -43,6 +78,11 @@ class FaceRecognition:
                 self.face_locations = face_recognition.face_locations(rgb_small_frame)
 
                 self.face_names = []
+                for face_location in self.face_locations:
+                # Each face_location contains the positions of the top, right, bottom and left edges of the face
+                    top, right, bottom, left = face_location
+                    print(top,right, bottom, left)
+                    
 
                 """ 
                 for face_encoding in self.face_encodings:
@@ -69,25 +109,18 @@ class FaceRecognition:
                     this function will look for the face in the known face encodings and will return the name of the person
                     however we now have a database of faces and we need to query the database to get the name of the person
 
-                    when the face is detected we will get the face encoding and we will query the database to get the name of the person
+                    when the face is detected we will get the face encoding and we will query the database to get the name of the person 
+
+                    Detect face  ->  Get face encoding  ->  Query database  ->  Get name of the person
+
         
                 
                 """
+            # Find all the faces in the current frame of video
+            self.face_locations = face_recognition.face_locations(rgb_small_frame)
+            print(self.face_locations)
 
             self.process_current_frame = not self.process_current_frame
-
-            # Display the results
-            for (top, right, bottom, left), name in zip(self.face_locations, self.face_names):
-                # Scale back up face locations since the frame we detected in was scaled to 1/4 size
-                top *= 4
-                right *= 4
-                bottom *= 4
-                left *= 4
-
-                # Create the frame with the name
-                cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
-                cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
-                cv2.putText(frame, name, (left + 6, bottom - 6), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
 
             # Display the resulting image
             cv2.imshow('Face Recognition', frame)
@@ -104,3 +137,8 @@ class FaceRecognition:
 if __name__ == '__main__':
     fr = FaceRecognition()
     fr.run_recognition()
+
+
+
+
+       
