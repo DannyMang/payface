@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/url_launcher_ios-Swift.h</key>
 		<data>
-		Olb5bD6BkX0FS4gphO0qb/46rVs=
+		HGmc8Xtfd5LOJDj4HPkurWOwTIE=
 		</data>
 		<key>Headers/url_launcher_ios-umbrella.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		sY4bszBQR5o3vp0pPvvG1HPaEUY=
+		iUXJ16N1BXNkW5eQYZj67ttNC6k=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/url_launcher_ios.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		49OjBPlP6GvnqrokpHipt2lUpw8=
+		0qAT6b5IlxHjBQeTCGD/SDLkmXI=
 		</data>
 		<key>Modules/url_launcher_ios.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		wulm+cI/Jy2ni/9HpRgk7cJG6xQ=
+		gjHccRHN38sNhzEhhM/esLQv2Gw=
 		</data>
 		<key>Modules/url_launcher_ios.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/url_launcher_ios.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ibbkDQ5dRbMIG91vSggfrObo9QA=
+		eKQfPG0ChQUk9mZtnOGQSc8TkAg=
 		</data>
 		<key>Modules/url_launcher_ios.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		XYC35al6f/384zt5s636GagJzxM=
+		Tt20RbOzTJOKtKoMiLfmaiJvS7s=
 		</data>
 		<key>Modules/url_launcher_ios.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -46,15 +46,15 @@
 		</data>
 		<key>Modules/url_launcher_ios.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		MUG45qXakJRDK49sdjlo7fo3Sys=
+		jFItHCfKRyw5uMDWpEyNTCKuS7w=
 		</data>
 		<key>Modules/url_launcher_ios.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		l7kv/pB8eP0nyJ+Ezbv8UlmRLug=
+		VsmAZ1qdlTC4Tcf/658/0ptY7vg=
 		</data>
 		<key>url_launcher_ios_privacy.bundle/Info.plist</key>
 		<data>
-		jiLM8xnkNaWu10n7Tko6G5a7EpQ=
+		iFFpn4SUihabTq9oYxF6LYu+uzw=
 		</data>
 		<key>url_launcher_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -67,7 +67,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TcJK3LP42cz7T+Nlq1nWL3o91j5mK1m21ckOvEU0plw=
+			64Wt7MgTHnSdLrqCUPOgFBo/A/9Jwfxyi6mWpLZrG80=
 			</data>
 		</dict>
 		<key>Headers/url_launcher_ios-umbrella.h</key>
@@ -88,14 +88,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DNRERLqPuW2yGZwe3kQSS4tbCa3joEPQFbBmuG1ld1g=
+			Q5WDpiJ5JAZU+hlxGJLAxlVbYZWwHWdpAZuqI1+mvLo=
 			</data>
 		</dict>
 		<key>Modules/url_launcher_ios.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ODiKL/JWbr6lzo422I9+BNZngYAB1YdQ9vEHXEn64v8=
+			1x0Y9C725lPM5V2TUyxRb1wyMn+9XIok9v4Gdk1Uj84=
 			</data>
 		</dict>
 		<key>Modules/url_launcher_ios.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -109,14 +109,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SPITjaANMSfHYrjAHpqgsexrDHuBz61SEhEqVg0EPkI=
+			4CnPotbQW97eStpOYgYRTOxYtgRzxDtz5ZN9LpBqLLU=
 			</data>
 		</dict>
 		<key>Modules/url_launcher_ios.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DSDwSbMNxTya5aFuSO9MJBTdBSfNlUpg5M9AXvhZzsY=
+			NGtsbZ8mdyPEfVW6Qg5lFlHCQhagpaRsECGC+/78u00=
 			</data>
 		</dict>
 		<key>Modules/url_launcher_ios.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -130,21 +130,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fHse4ww4VUc9Q3XHKI3bNAM71AQFyzDUAbQgnOQiRnU=
+			D75cJCEB796xvG4cLPvrWx0pywHx90MEQHXNvYyuQeA=
 			</data>
 		</dict>
 		<key>Modules/url_launcher_ios.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			svhaVPMpNGAxhJnrD5qL+Uo5Zr31Vs8aI6/RTW/qg3c=
+			KPvGi3xHU2lYoPWSH69k7Gs7st8tehr9L++2Tjkayuc=
 			</data>
 		</dict>
 		<key>url_launcher_ios_privacy.bundle/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			K5h8qwAf+OKA9FD0MSEaPRtdOS5UmOveiD1ufAD2Hs0=
+			fqFfehzyQQ8i0jtZMCpyuQ66SZWrFNVGZA42o0Y2GvE=
 			</data>
 		</dict>
 		<key>url_launcher_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
