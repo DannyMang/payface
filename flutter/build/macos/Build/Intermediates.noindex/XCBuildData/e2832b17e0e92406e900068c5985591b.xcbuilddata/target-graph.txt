@@ -1,0 +1,18 @@
+Target dependency graph (6 targets)
+FlutterMacOS in Pods, no dependencies
+file_selector_macos in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+url_launcher_macos in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+Flutter Assemble in Runner, depends on:
+file_selector_macos in Pods (implicit dependency via options '-framework file_selector_macos' in build setting 'OTHER_LDFLAGS')
+url_launcher_macos in Pods (implicit dependency via options '-framework url_launcher_macos' in build setting 'OTHER_LDFLAGS')
+Pods-Runner in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+file_selector_macos in Pods (explicit)
+url_launcher_macos in Pods (explicit)
+Runner in Runner, depends on:
+Flutter Assemble in Runner (explicit)
+Pods-Runner in Pods (implicit dependency via file 'Pods_Runner.framework' in build phase 'Link Binary')
+file_selector_macos in Pods (implicit dependency via options '-framework file_selector_macos' in build setting 'OTHER_LDFLAGS')
+url_launcher_macos in Pods (implicit dependency via options '-framework url_launcher_macos' in build setting 'OTHER_LDFLAGS')

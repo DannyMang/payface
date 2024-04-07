@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)"
+options: "7134b0fcc8fe55076bfe85795d38cd1772ec59314022a9ed59dbe47b21a4966c"
+build_start_time: [1711691425, 773437000]
+build_end_time: [1711691425, 805451000]
+inputs:
+  "/Users/bensontran/Documents/GitHub/payface/flutter/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1711691395, 208473405]
+  "/Users/bensontran/Documents/GitHub/payface/flutter/macos/Runner/AppDelegate.swift": !private [1711342649, 721235362]
+  "/Users/bensontran/Documents/GitHub/payface/flutter/macos/Runner/MainFlutterWindow.swift": !private [1711342649, 724696961]
